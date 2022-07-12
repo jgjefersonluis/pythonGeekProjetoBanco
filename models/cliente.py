@@ -41,29 +41,3 @@ class Cliente:
 
     def __str__(self: object) -> str:
         return f'Codigo: {self.codigo} \nNome: {self.nome}\nData de Nascimento: {self.data_nascimento}\nCadastro: {self.data_cadastro}'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
