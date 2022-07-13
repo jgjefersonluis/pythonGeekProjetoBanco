@@ -123,6 +123,15 @@ def efetuar_transferencia()->None:
     sleep(2)
     menu()
 
+def listar_contas() -> None:
+    pass
+
+
+
+def buscar_conta_por_numero(numero: int) -> Conta:
+    c: Conta =None
+    pass
+
 
 
 
