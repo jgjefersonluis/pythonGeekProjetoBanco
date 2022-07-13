@@ -83,6 +83,25 @@ def efetuar_saque() -> None:
         sleep(2)
         menu()
 
+def efetuar_deposito() -> None:
+    if len(contas) > 0:
+        numero: int(input('Informe o número da sua conta: '))
+
+        conta: Conta = buscar_conta_por_numero(numero)
+
+        if conta:
+            valor: float = float(input('Informe o valor do depósito: '))
+
+            conta.depositar(valor)
+        else:
+            print(f'Não foi encontrada uma conta com número {numero}')
+    else:
+        print('Ainda não exitem contas cadastradas.')
+    sleep(2)
+    menu()
+
+
+
 
 
 
