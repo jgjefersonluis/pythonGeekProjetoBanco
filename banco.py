@@ -1,8 +1,7 @@
+from time import sleep
 from typing import List
+from models.cliente import Cliente
 from models.conta import Conta
-
-
-
 
 
 contas: List[Conta] = []
@@ -99,6 +98,31 @@ def efetuar_deposito() -> None:
         print('Ainda não exitem contas cadastradas.')
     sleep(2)
     menu()
+
+def efetuar_transferencia()->None:
+    if len(contas) > 0:
+        numero_o: int = int(input('Informe o número da sua conta: '))
+
+        conta_o: Conta = buscar_conta_por_numero(numero_o)
+
+        if conta_o:
+            numero_d: int = int(input('Informe o número da conta destno: '))
+
+            conta_d: Conta = buscar_conta_por_numero(numero_d)
+
+            if conta_d:
+                valor: float = float(input('Informe o valor da transferênmcia: '))
+
+                conta_o.transferir(conta_d, valor)
+            else:
+                print(f'A conta destino com número {numero_d} não foi encontradas')
+        else:
+            print(f'A sua conta com número {numero_o} não foi encontrada.')
+    else:
+        print(f'Ainda não existem contas cadastradas.')
+    sleep(2)
+    menu()
+
 
 
 
