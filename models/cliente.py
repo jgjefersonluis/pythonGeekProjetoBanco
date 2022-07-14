@@ -1,12 +1,12 @@
 from datetime import date
 
-from utils.helper import str_para_date, date_para_str
+from utils.helper import date_para_str, str_para_date
 
 
 class Cliente:
     contador: int = 101
 
-    def __init__(self: object, nome: str, email: str,  cpf: str, data_nascimento: str) -> None:
+    def __init__(self: object, nome: str, email: str, cpf: str, data_nascimento: str) -> None:
         self.__codigo: int = Cliente.contador
         self.__nome: str = nome
         self.__email: str = email
@@ -23,7 +23,7 @@ class Cliente:
     def nome(self: object) -> str:
         return self.__nome
 
-    @ property
+    @property
     def email(self: object) -> str:
         return self.__email
 
@@ -32,7 +32,7 @@ class Cliente:
         return self.__cpf
 
     @property
-    def data_nascimento(self:object) -> str:
+    def data_nascimento(self: object) -> str:
         return date_para_str(self.__data_nascimento)
 
     @property
@@ -40,4 +40,6 @@ class Cliente:
         return date_para_str(self.__data_cadastro)
 
     def __str__(self: object) -> str:
-        return f'Codigo: {self.codigo} \nNome: {self.nome}\nData de Nascimento: {self.data_nascimento}\nCadastro: {self.data_cadastro}'
+        return f'Código: {self.codigo} \nNome: {self.nome} \nData de Nascimento: {self.data_nascimento} ' \
+               f'\nCadastro: {self.data_cadastro}'
+

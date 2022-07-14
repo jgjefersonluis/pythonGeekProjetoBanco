@@ -15,8 +15,8 @@ class Conta:
         Conta.codigo += 1
 
     def __str__(self: object) -> str:
-        return f'Número da conta: {self.numero} \nCliente: {self.cliente.nome} \nSaldo Total: {formata_float_str_moeda(self.saldo_total)}'
-
+        return f'Número da conta: {self.numero} \nCliente: {self.cliente.nome} ' \
+               f'\nSaldo Total: {formata_float_str_moeda(self.saldo_total)}'
 
     @property
     def numero(self: object) -> int:
@@ -35,7 +35,7 @@ class Conta:
         self.__saldo = valor
 
     @property
-    def limite(self:object) -> float:
+    def limite(self: object) -> float:
         return self.__limite
 
     @limite.setter
@@ -62,19 +62,19 @@ class Conta:
         else:
             print('Erro ao efetuar depósito. Tente novamente')
 
-        def sacar(self: object, valor: float) -> None:
-            if 0 < valor <= self.saldo_total:
-                if self.saldo >= valor:
-                    self.saldo = self.saldo - valor
-                    self.saldo_total = self._calcula_saldo_total
-                else:
-                    restante: float = self.saldo - valor
-                    self.limite = self.limite + restante
-                    self.saldo = 0
-                    self.saldo_total = self._calcula_saldo_total
-                print('Saque efetucado com sucesso!')
+    def sacar(self: object, valor: float) -> None:
+        if 0 < valor <= self.saldo_total:
+            if self.saldo >= valor:
+                self.saldo = self.saldo - valor
+                self.saldo_total = self._calcula_saldo_total
             else:
-                print('Saque não realizado. Tente novamente!')
+                restante: float = self.saldo - valor
+                self.limite = self.limite + restante
+                self.saldo = 0
+                self.saldo_total = self._calcula_saldo_total
+            print('Saque efetuado com sucesso')
+        else:
+            print('Saque não realizado. Tente novamente')
 
     def transferir(self: object, destino: object, valor: float) -> None:
         if valor > 0 and self.saldo_total >= valor:
@@ -86,10 +86,11 @@ class Conta:
             else:
                 restante: float = self.saldo - valor
                 self.saldo = 0
-                self.limite  = self.limite + restante
+                self.limite = self.limite + restante
                 self.saldo_total = self._calcula_saldo_total
                 destino.saldo = destino.saldo + valor
                 destino.saldo_total = destino._calcula_saldo_total
-            print('Transferência realizada com sucesso!')
+            print('Transferência realizada com sucesso.')
         else:
-             print('Transferência não realizada. Tente novamente!')
+            print('Transferência não realizada. Tente novamente')
+
