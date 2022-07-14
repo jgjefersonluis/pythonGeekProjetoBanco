@@ -124,40 +124,25 @@ def efetuar_transferencia()->None:
     menu()
 
 def listar_contas() -> None:
-    pass
+    if len(contas) > 0:
+        print('Listagem de contas')
 
-
+        for conta in contas:
+            print('-------------------')
+            sleep(1)
+    else:
+        print('Não existem contas cadastradas.')
+    sleep(2)
+    menu()
 
 def buscar_conta_por_numero(numero: int) -> Conta:
     c: Conta =None
-    pass
 
+    if len(contas) > 0:
+        for conta in contas:
+            if conta.numero == numero:
+                c = conta
+    return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    main()
